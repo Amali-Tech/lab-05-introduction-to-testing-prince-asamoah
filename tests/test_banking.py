@@ -13,6 +13,12 @@ class TestBankAcount(unittest.TestCase):
     def test_add_amount(self):
         self.account.add_amount(100)
         self.assertEqual(self.account.balance, 100)
+        
+    def test_withdraw_amount(self):
+        self.account.add_amount(100)
+        self.account.withdraw_amount(50)
+        self.assertEqual(self.account.balance, 50 )
+        
 
 if __name__ == '__main__':
     unittest.main()
