@@ -8,8 +8,19 @@ def exit_program():
     
 def deposit_amount(bank_account: BankAccount):
     try:
-        amount = float(input('Enter amount to deposit: '))
-        bank_account.add_amount(amount)
-        print(f'Depositied ${amount}. \nNew Balance: ${bank_account.balance}\n')
+        amount = input('Enter amount to deposit: ')
+        bank_account.add_amount(float(amount))
+        print(f'Deposited ${float(amount)}.')
+        print(f'New Balance: ${bank_account.balance}\n')
+    except ValueError:
+        print('Invalid amount. Please enter a number.')
+
+def withdraw_amount(bank_account: BankAccount):
+    try:
+        amount = input('Enter amount to withdraw: ')
+        bank_account.withdraw_amount(float(amount))
+        print(f'Withrawn ${amount}.')
+        print(f'New Balance: ${bank_account.balance}\n')
+        
     except ValueError:
         print('Invalid amount. Please enter a number.')

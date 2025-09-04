@@ -21,7 +21,21 @@ class BankAccount:
             None
         """
         
-        # Increate balance by the deposit amount
+        # Increase balance by the deposit amount
         self.balance += amount
+        
+    def withdraw_amount(self, amount: float):
+        """
+        Withdraw amount from account.
+
+        Args:
+            amount (float): The amount to withraw.
+            
+        Returns:
+            None
+        """
+    
+        # Decrease balance by the withdrawal amount
+        self.balance -= amount
         
         
