@@ -19,7 +19,7 @@ def withdraw_amount(bank_account: BankAccount):
     try:
         amount = input('Enter amount to withdraw: ')
         bank_account.withdraw_amount(float(amount))
-        print(f'Withrawn ${amount}.')
+        print(f'Withdrawn ${amount}.')
         print(f'New Balance: ${bank_account.balance}\n')
         
     except ValueError:
