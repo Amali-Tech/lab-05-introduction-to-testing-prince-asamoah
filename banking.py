@@ -9,3 +9,19 @@ class BankAccount:
     def __init__(self):
         """Initialize the BankAccount with a starting balance of 0."""
         self.balance = 0
+        
+    def add_amount(self, amount: float):
+        """
+        Deposit amount into account.
+        
+        Args:
+            amount (float): The amount to deposit.
+            
+        Returns:
+            None
+        """
+        
+        # Increate balance by the deposit amount
+        self.balance += amount
+        
+        
