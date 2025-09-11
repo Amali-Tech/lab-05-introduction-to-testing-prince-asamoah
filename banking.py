@@ -21,6 +21,9 @@ class BankAccount:
             None
         """
         
+        if amount <= 0:
+            raise ValueError('Deposit amount must be positive.')
+        
         # Increase balance by the deposit amount
         self.balance += amount
         
@@ -34,7 +37,11 @@ class BankAccount:
         Returns:
             None
         """
-    
+
+        if amount <= 0:
+            raise ValueError('Withdrawal amount must be positive.')
+        if amount > self.balance:
+            raise ValueError('Insufficient funds. Overdraft not allowed.')
         # Decrease balance by the withdrawal amount
         self.balance -= amount
         

@@ -31,3 +31,26 @@ class TestActions(unittest.TestCase):
         self.assertEqual(self.account.balance, 50)
         self.assertIn('Withdrawn $50.0.', mock_stdout.getvalue())
         self.assertIn('New Balance: $50.0', mock_stdout.getvalue())
+        
+    @patch('builtins.input', return_value='-50')
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_deposit_negative_shows_error_message(self, mock_stdout, mock_input):
+        actions.deposit_amount(self.account)
+        self.assertIn('Error: Deposit amount must be positive.', mock_stdout.getvalue())
+        self.assertEqual(self.account.balance, 0)
+
+
+    @patch('builtins.input', return_value='0')
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_deposit_zero_shows_error_message(self, mock_stdout, mock_input):
+        actions.deposit_amount(self.account)
+        self.assertIn('Error: Deposit amount must be positive.', mock_stdout.getvalue())
+        self.assertEqual(self.account.balance, 0)
+
+    @patch('builtins.input', return_value='200')
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_overdraft_shows_error_message(self, mock_stdout, mock_input):
+        self.account.add_amount(100)
+        actions.withdraw_amount(self.account)
+        self.assertIn("Error: Insufficient funds. Overdraft not allowed.", mock_stdout.getvalue())
+        # self.assertEqual(self.account.balance, 100)

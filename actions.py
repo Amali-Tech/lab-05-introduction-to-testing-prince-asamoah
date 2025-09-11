@@ -12,8 +12,8 @@ def deposit_amount(bank_account: BankAccount):
         bank_account.add_amount(float(amount))
         print(f'Deposited ${float(amount)}.')
         print(f'New Balance: ${bank_account.balance}\n')
-    except ValueError:
-        print('Invalid amount. Please enter a number.')
+    except ValueError as e:
+        print(f'Error: {e}')
 
 def withdraw_amount(bank_account: BankAccount):
     try:
@@ -22,5 +22,5 @@ def withdraw_amount(bank_account: BankAccount):
         print(f'Withdrawn ${float(amount)}.')
         print(f'New Balance: ${bank_account.balance}\n')
         
-    except ValueError:
-        print('Invalid amount. Please enter a number.')
+    except ValueError as e:
+        print(f'Error: {e}')
