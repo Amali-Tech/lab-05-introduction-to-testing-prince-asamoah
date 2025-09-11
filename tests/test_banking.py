@@ -25,7 +25,7 @@ class TestBankAcount(unittest.TestCase):
             
     def test_add_negative_raises_value_error(self):
         with self.assertRaises(ValueError):
-            self.account.withdraw_amount(0)
+            self.account.withdraw_amount(-100)
             
     def test_withdraw_zero_raises_value_error(self):
         self.account.add_amount(100)
