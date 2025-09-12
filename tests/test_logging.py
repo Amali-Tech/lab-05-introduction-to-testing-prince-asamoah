@@ -13,4 +13,12 @@ class TestBankAccountLogging(unittest.TestCase):
         """Reset mock logger and account"""
         self.mock_logger.reset_mock()
         del self.account
-        
+    
+    def test_deposit_logs_transaction(self):
+        self.account.add_amount(100)
+        self.mock_logger.log.assert_called_once_with("Deposited $100")
+    
+    def test_withdraw_logs_transaction(self):
+        self.account.add_amount(200)
+        self.account.withdraw_amount(50)
+        self.mock_logger.log.assert_called_with("Withdrew $50")
