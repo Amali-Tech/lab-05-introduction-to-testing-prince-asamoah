@@ -1,12 +1,12 @@
 import unittest
-from unittest.mock import MagicMock
+from unittest.mock import Mock
 from logger import LoggerService
 from banking import BankAccount
 
 class TestBankAccountLogging(unittest.TestCase):
     def setUp(self) -> None:
         """Setup mock logger before each test"""
-        self.mock_logger = MagicMock(spec=LoggerService)
+        self.mock_logger = Mock(spec=LoggerService)
         self.account = BankAccount(logger=self.mock_logger)
         
     def tearDown(self) -> None:
