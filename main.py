@@ -10,8 +10,9 @@ def main():
     
     # Create instance of logger
     logger  = LoggerService()
+    
     # Create a new bank account
-    account = BankAccount(logger)
+    account = BankAccount()
     actions = {
         "1": lambda: deposit_amount(account),
         "2": lambda: withdraw_amount(account),

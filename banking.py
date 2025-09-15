@@ -1,5 +1,6 @@
-from typing import Optional
-from logger import LoggerService
+from logger import LoggerService, LogLevel
+
+logger = LoggerService(name='Banking')
 
 class BankAccount:
     """
@@ -9,11 +10,10 @@ class BankAccount:
         balance (float): The current balance of the account. Defaults to 0.
     """
     
-    def __init__(self, logger: Optional[LoggerService] = None):
+    def __init__(self):
         """Initialize the BankAccount with a starting balance of 0."""
         self.balance = 0
         self.last_transaction = None
-        self.logger = logger
         
     def add_amount(self, amount: float):
         """
@@ -33,8 +33,7 @@ class BankAccount:
         self.balance += amount
         self.last_transaction = amount
         
-        if self.logger:
-            self.logger.log(f"Deposited ${amount}")
+        logger.log(level=LogLevel.INFO, message=f"Deposited ${amount}")
         
     def withdraw_amount(self, amount: float):
         """
@@ -55,8 +54,7 @@ class BankAccount:
         self.balance -= amount
         self.last_transaction = -amount
         
-        if self.logger:
-            self.logger.log(f"Withdrew ${amount}")
+        logger.log(level=LogLevel.INFO, message=f"Withdrew ${amount}")
         
     def generate_summary(self) -> str:
         """
