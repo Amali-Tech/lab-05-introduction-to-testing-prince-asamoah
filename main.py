@@ -4,10 +4,9 @@
 from banking import BankAccount
 from actions import exit_program, deposit_amount, withdraw_amount, show_summary
 
-
 def main():
     """Banking application starts here"""
-
+    
     # Create a new bank account
     account = BankAccount()
     actions = {

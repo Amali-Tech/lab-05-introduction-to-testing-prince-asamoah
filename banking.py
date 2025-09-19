@@ -29,6 +29,8 @@ class BankAccount:
         self.balance += amount
         self.last_transaction = amount
         
+        # logger.log(f"Deposited ${amount}")
+        
     def withdraw_amount(self, amount: float):
         """
         Withdraw amount from account.
@@ -47,6 +49,8 @@ class BankAccount:
         # Decrease balance by the withdrawal amount
         self.balance -= amount
         self.last_transaction = -amount
+        
+        # logger.log(f"Withdrew ${amount}")
         
     def generate_summary(self) -> str:
         """
