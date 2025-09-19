@@ -3,20 +3,16 @@
 
 from banking import BankAccount
 from actions import exit_program, deposit_amount, withdraw_amount, show_summary
-from logger import LoggerService
 
 def main():
     """Banking application starts here"""
     
-    # Create logger instance
-    logger = LoggerService(name='PacificaBank')
-    
     # Create a new bank account
     account = BankAccount()
     actions = {
-        "1": lambda: deposit_amount(account, logger),
-        "2": lambda: withdraw_amount(account, logger),
-        "3": lambda: show_summary(account, logger),
+        "1": lambda: deposit_amount(account),
+        "2": lambda: withdraw_amount(account),
+        "3": lambda: show_summary(account),
         "4": lambda: exit_program(),
     }
 
